@@ -4,28 +4,68 @@
 <link rel="stylesheet" href="http://127.0.0.1:8000/static/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
+<style>
+  body {
+    background-color: #f8f9fa;
+  }
+  .custom-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 50px;
+  }
+  .custom-jumbotron {
+    background-color: #e9ecef;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .custom-title {
+    font-size: 2.5rem;
+    color: #343a40;
+    margin-bottom: 20px;
+    font-weight: 700;
+  }
+  .form-group {
+    margin-bottom: 20px;
+  }
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 5px;
+  }
+  .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #004085;
+  }
+</style>
 
 <main class="container">
-  <div class="bg-body-tertiary p-5 rounded">
-    <div class="jumbotron">
+  <div class="custom-container">
+    <div class="custom-jumbotron">
       <div class="row">
          {% if request.user.is_authenticated %}
          <div class="col-sm-6">
-        <h1 class="title">{{title}}</h1>
-         <form method="post" action="">
-           {% csrf_token %}
-           {% for field in form %}
-           {% bootstrap_field field%}
-           {% endfor %}
-           
-           <input class="btn btn-primary" type="submit" value="Save" />
-        </form>
-        </div><!-- first col-sm-6 -->
-        {% endif %}
-       </div><!-- first row -->
-   </div>
+          <h1 class="custom-title">{{ title }}</h1>
+          <form method="post" action="">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="form-group">
+              {% bootstrap_field field %}
+            </div>
+            {% endfor %}
+            <input class="btn btn-primary" type="submit" value="Save" />
+          </form>
+         </div>
+         {% endif %}
+       </div>
+    </div>
   </div>
-    
 </main>
 
 {% endblock header %}
