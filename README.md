@@ -1,5 +1,5 @@
 # Computer Inventory Management System (CIMS)
-Computer Inventory Management System (CIMS) is a web-based application built with Django that enables you to efficiently manage and monitor computer assets within your organization.
+Asset Tracker for Computer Inventory System is a web-based application built with Django that enables you to efficiently manage and monitor computer assets within your organization.
 
 ## Overview
 CIMS serves as a centralized repository for storing and maintaining comprehensive information about the computers deployed in your organization. It offers the following key features:
@@ -38,9 +38,4 @@ To get started with CIMS, follow these steps:
 - **Main Application:** Access the main application to add, edit, and list computers. Use the search and filtering options to quickly locate specific computers.
 
 
-## Contributing
-Contributions are welcome! If you have any ideas, suggestions, or discover issues, please create a GitHub issue or fork the repository and submit a pull request.
 
-## Acknowledgments
-
-CIMS is built with [Django](https://www.djangoproject.com/), utilizing Bootstrap 5 for the frontend and incorporating icons from [Font Awesome](https://fontawesome.com/).
