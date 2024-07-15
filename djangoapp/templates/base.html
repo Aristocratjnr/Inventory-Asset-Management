@@ -4,27 +4,52 @@
 
 <link rel="stylesheet" href="http://127.0.0.1:8000/static/css/bootstrap.min.css">
 
+<style>
+  .custom-container {
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .custom-title {
+    font-size: 2.5rem;
+    color: #343a40;
+  }
+  .custom-subtitle {
+    font-size: 1.5rem;
+    color: #6c757d;
+  }
+  .custom-img {
+    height: 500px;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+  .login-link {
+    font-size: 1.2rem;
+    color: #007bff;
+  }
+</style>
+
 <main class="container">
-  <div class="bg-body-tertiary p-5 rounded d-flex justify-content-center align-items-center">
+  <div class="bg-body-tertiary custom-container d-flex justify-content-center align-items-center">
     <div class="text-center">
-      {%if request.user.is_authenticated%}
-        <h1 class="title">{{ title }}</h1>
+      {% if request.user.is_authenticated %}
+        <h1 class="custom-title">{{ title }}</h1>
         <div class="mt-5">
-          <h3 class="mb-5">Welcome {{ user }}</h3>
+          <h3 class="custom-subtitle mb-5">Welcome {{ user }}</h3>
         </div>
-          <img style="height: 500px"; src="../static/img/pc.jpg">
+        <img class="custom-img" src="../static/img/pc.jpg" alt="PC Image">
       {% else %}
-        <p>Login <a href="/accounts/login">here</a></p>
+        <p class="login-link">Login <a href="/accounts/login">here</a></p>
       {% endif %}
 
-     
       {% block title %}
       {% endblock %}
   
       {% block content %}
       {% endblock %}
     </div>
-  </div>   
+  </div>
 </main>
 
 {% endblock header %}
