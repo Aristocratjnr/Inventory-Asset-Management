@@ -8,7 +8,7 @@ import csv
 
 # Create your views here.
 def home(request):
-    title = ''
+    title = 'Computer Inventory Asset Management System - C.I.A.S'
     context = {
         "title": title,
     }
