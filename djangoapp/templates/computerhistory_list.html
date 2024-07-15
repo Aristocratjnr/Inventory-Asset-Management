@@ -4,10 +4,53 @@
 {% block header %}
 <link rel="stylesheet" href="http://127.0.0.1:8000/static/css/bootstrap.min.css">
 
+<style>
+  .custom-container {
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  .custom-title {
+    font-size: 2.5rem;
+    color: #343a40;
+  }
+  .custom-table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  .custom-table th, .custom-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  .custom-table th {
+    background-color: #007bff;
+    color: white;
+  }
+  .custom-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  .custom-alert {
+    margin-bottom: 20px;
+  }
+  .login-link {
+    font-size: 1.2rem;
+    color: #007bff;
+  }
+  .messages {
+    list-style-type: none;
+    padding: 0;
+  }
+  .messages li {
+    margin-bottom: 10px;
+  }
+</style>
 
 <main class="container">
-  {%if request.user.is_authenticated%}
-  <div class="alert alert-success">
+  {% if request.user.is_authenticated %}
+  <div class="alert alert-success custom-alert">
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
@@ -17,8 +60,8 @@
     {% endif %}
   </div>
   
-  <div class="bg-body-tertiary p-5 rounded">
-    <h1 class="title mb-5"> {{ title }}</h1>
+  <div class="bg-body-tertiary custom-container">
+    <h1 class="title mb-5 custom-title">{{ title }}</h1>
     <div class="row mb-3">
       <form method="post" action="" class="pr-4">
           {% csrf_token %}
@@ -38,8 +81,7 @@
       </form>
     </div>
   
-
-    <table>
+    <table class="custom-table">
         <tr>
             <th>#</th>
             <th>PC NAME</th>
@@ -64,14 +106,12 @@
           <td>{{ instance.users_name }}</td>
           <td>{{ instance.location }}</td>
         </tr>
-      
         {% endfor %}
     </table>
   </div>
-  {%else%}
-  <p>Log in <a href="/accounts/login">here</a></p>
-  {%endif%}
+  {% else %}
+  <p class="login-link">Log in <a href="/accounts/login">here</a></p>
+  {% endif %}
 </main>
-
 
 {% endblock header %}
