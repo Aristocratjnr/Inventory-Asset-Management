@@ -1,0 +1,31 @@
+{% extends "header.html" %}
+{% load bootstrap5 %}
+{% block header %}
+<link rel="stylesheet" href="http://127.0.0.1:8000/static/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://127.0.0.1:8000/static/css/navbar-fixed.css">
+<link rel="stylesheet" href="http://127.0.0.1:8000/static/css/stylesheet.css">
+
+<main class="container">
+  <div class="bg-body-tertiary p-5 rounded">
+    <div class="jumbotron">
+      <div class="row">
+         {% if request.user.is_authenticated %}
+         <div class="col-sm-6">
+        <h1 class="title">{{title}}</h1>
+         <form method="post" action="">
+           {% csrf_token %}
+           {% for field in form %}
+           {% bootstrap_field field%}
+           {% endfor %}
+           
+           <input class="btn btn-primary" type="submit" value="Save" />
+        </form>
+        </div><!-- first col-sm-6 -->
+        {% endif %}
+       </div><!-- first row -->
+   </div>
+  </div>
+    
+</main>
+
+{% endblock header %}
