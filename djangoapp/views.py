@@ -1,12 +1,12 @@
-from django.shortcuts import render, redirect
+# views.py
+
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import ComputerForm, ComputerSearchForm, OperatingSystemForm
 from .models import Computer, ComputerHistory
-from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 import csv
 
-# Create your views here.
 def home(request):
     title = 'Computer Inventory Asset Management System - C.I.A.M.S'
     context = {
@@ -19,9 +19,9 @@ def computer_entry(request):
     form = ComputerForm(request.POST or None)
     
     if form.is_valid():
-        computer = form.save(commit=False) 
-        computer.save() 
-        form.save_m2m() 
+        computer = form.save(commit=False)
+        computer.save()
+        form.save_m2m()
 
         history_entry = ComputerHistory(
             computer_name=computer.computer_name,
@@ -65,9 +65,9 @@ def computer_list(request):
         response['Content-Disposition'] = 'attachment; filename="Computer list.csv"'
         writer = csv.writer(response)
         writer.writerow(['COMPUTER NAME', 'IP Address', 'MAC ADDRESS', 'OS', 'USERNAME', 'LOCATION', 'PURCHASE DATE', 'TIMESTAMP'])
-        instance = queryset
-        for row in instance:
-            writer.writerow([row.computer_name, row.IP_address, row.MAC_address, ', '.join([os.name for os in row.operating_system.all()]), row.users_name, row.location, row.purchase_date, row.timestamp])
+        for row in queryset:
+            os_names = ', '.join([os.name for os in row.operating_system.all()])
+            writer.writerow([row.computer_name, row.IP_address, row.MAC_address, os_names, row.users_name, row.location, row.purchase_date, row.timestamp])
         return response
     
     return render(request, "computer_list.html", context)

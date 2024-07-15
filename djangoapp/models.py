@@ -3,7 +3,7 @@ from datetime import datetime, date
 
 # Create your models here.
 class Operating_system(models.Model):
-    operating_system = models.CharField(max_length=30, blank=True)
+    operating_system = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.operating_system
