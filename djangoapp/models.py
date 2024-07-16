@@ -16,7 +16,7 @@ class Computer(models.Model):
     operating_system = models.ManyToManyField(Operating_system, blank=True)
     users_name = models.CharField(max_length=30, blank=True, null=True)
     location = models.CharField(max_length=30)
-    purchase_date = models.DateField("Purchase mm-dd-yy",auto_now_add = False, auto_now = False, blank=True, null=True)
+    purchase_date = models.DateField("Purchase Date",auto_now_add = False, auto_now = False, blank=True, null=True)
     export_to_CSV = models.BooleanField(default=False)
     
     def __str__(self):
