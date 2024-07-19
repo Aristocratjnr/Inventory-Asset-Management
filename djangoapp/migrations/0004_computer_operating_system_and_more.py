@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='computer',
             name='operating_system',
-            field=models.CharField(blank=True, choices=[('Mac OS', 'Mac OS'), ('Windows 11', 'Windows 11'), ('Windows 10', 'Windows 10'), ('Windows 8', 'Windows 8'), ('Linux', 'Linux')], max_length=30, null=True),
+            field=models.CharField(blank=True, choices=[('iOS', 'iOS'), ('Windows', 'Windows'), ('Andriod', 'Andriod'), ('Harmony0S', 'Harmony0S'), ('Linux', 'Linux')], max_length=30, null=True),
         ),
         migrations.AlterField(
             model_name='computer',
