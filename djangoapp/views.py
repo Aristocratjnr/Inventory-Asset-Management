@@ -64,7 +64,7 @@ def computer_list(request):
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="Computer list.csv"'
         writer = csv.writer(response)
-        writer.writerow(['COMPUTER NAME', 'IP Address', 'MAC ADDRESS', 'OS', 'USERNAME', 'LOCATION', 'PURCHASE DATE', 'TIMESTAMP'])
+        writer.writerow(['Device Name', 'Brand', 'Warranty', 'OS', 'UserName', 'LOCATION', 'PURCHASE DATE', 'TIMESTAMP'])
         for row in queryset:
             os_names = ', '.join([os.name for os in row.operating_system.all()])
             writer.writerow([row.computer_name, row.IP_address, row.MAC_address, os_names, row.users_name, row.location, row.purchase_date, row.timestamp])
