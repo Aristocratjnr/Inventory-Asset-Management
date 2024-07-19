@@ -5,15 +5,19 @@
 <link rel="icon" href="../static/img/favicon.ico" type="image/x-icon">
 
 <style>
-  .custom-container {
+  body {
     background-color: #424242;
+    color:  #616161; /* Default text color for better contrast */
+  }
+  .custom-container {
+    background-color: #616161; /* Slightly lighter background color for the container */
     border-radius: 10px;
     padding: 30px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   .custom-title {
     font-size: 2.5rem;
-    color: #343a40;
+    color:  #616161; /* White text for titles */
   }
   .custom-table {
     width: 100%;
@@ -26,11 +30,11 @@
     border-bottom: 1px solid #616161;
   }
   .custom-table th {
-    background-color: #424242;
-    color: #616161;
+    background-color: #616161;
+    color: #ffffff; /* White text for table headers */
   }
   .custom-table tr:hover {
-    background-color: #616161;
+    background-color: #757575;
   }
   .custom-alert {
     margin-bottom: 20px;
@@ -40,7 +44,13 @@
   }
   .login-link {
     font-size: 1.2rem;
-    color: #424242;
+    color: #ffffff; /* White text for login link */
+  }
+  .login-link a {
+    color: #007bff;
+  }
+  .login-link a:hover {
+    color: #0056b3;
   }
   .messages {
     list-style-type: none;
@@ -99,7 +109,7 @@
         <tr>
           <td>{{ forloop.counter }}</td>
           {% if perms.djangoapp.change_computer %}
-          <td><a href="{% url 'computer_edit' id=instance.id %}" data-toggle="tooltip" title="edit this item">{{ instance.computer_name }}</a></td>
+          <td><a href="{% url 'computer_edit' id=instance.id %}" data-toggle="tooltip" title="edit this item" style="color: #007bff;">{{ instance.computer_name }}</a></td>
           {% else %}
           <td>{{ instance.computer_name }}</td>
           {% endif %}
