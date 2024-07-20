@@ -64,10 +64,10 @@ def computer_list(request):
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="Computer list.csv"'
         writer = csv.writer(response)
-        writer.writerow(['COMPUTER NAME', 'IP Address', 'MAC ADDRESS', 'OS', 'USERNAME', 'LOCATION', 'PURCHASE DATE'])
-        for row in queryset:
-            os_names = ', '.join([os.name for os in row.operating_system.all()])
-            writer.writerow([row.computer_name, row.IP_address, row.MAC_address, os_names, row.users_name, row.location, row.purchase_date])
+        writer.writerow(['COMPUTER NAME', 'IP Address', 'MAC ADDRESS', 'OS', 'USERNAME', 'LOCATION', 'PURCHASE DATE', 'TIMESTAMP'])
+        instance = queryset
+        for row in instance:
+            writer.writerow([row.computer_name, row.IP_address, row.MAC_address, ', '.join([os.name for os in row.operating_system.all()]), row.users_name, row.location, row.purchase_date, row.timestamp])
         return response
     
     return render(request, "computer_list.html", context)
