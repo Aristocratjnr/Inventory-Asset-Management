@@ -46,7 +46,7 @@ def computer_entry(request):
     return render(request, "computer_entry.html", context)
 
 def computer_list(request):
-    title = "List of all computers"
+    title = "List of all devices"
     form = ComputerSearchForm(request.POST or None)
     
     if request.method == 'POST':
