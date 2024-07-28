@@ -59,7 +59,8 @@ def computer_list(request):
         "queryset": queryset,
         "form": form,
     }
-    
+
+
     if form['export_to_CSV'].value() == True:
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename="Computer list.csv"'
