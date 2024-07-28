@@ -68,7 +68,7 @@ def computer_list(request):
         writer.writerow(['COMPUTER NAME', 'IP Address', 'MAC ADDRESS', 'OS', 'USERNAME', 'LOCATION', 'PURCHASE DATE', 'TIMESTAMP'])
         instance = queryset
         for row in instance:
-            writer.writerow([row.computer_name, row.IP_address, row.MAC_address, ', '.join([os.name for os in row.operating_system.all()]), row.users_name, row.location, row.purchase_date, row.timestamp])
+            writer.writerow([row.computer_name, row.IP_address, row.MAC_address, ', '.join([os.operating_system for os in row.operating_system.all()]), row.users_name, row.location, row.purchase_date, row.timestamp])
         return response
     
     return render(request, "computer_list.html", context)
