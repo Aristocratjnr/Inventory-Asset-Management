@@ -15,7 +15,7 @@ def home(request):
     return render(request, "base.html", context)
 
 def computer_entry(request):
-    title = "Add Computer"
+    title = "Add a device"
     form = ComputerForm(request.POST or None)
     
     if form.is_valid():
