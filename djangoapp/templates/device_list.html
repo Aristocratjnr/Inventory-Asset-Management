@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Device Scan Results</title>
+</head>
+<body>
+    <h1>Scanned Devices</h1>
+    <ul>
+    {% for device in devices %}
+        <li>
+            <strong>IP:</strong> {{ device.ip }}<br>
+            <strong>Hostname:</strong> {{ device.hostname }}<br>
+            <strong>State:</strong> {{ device.state }}<br>
+            <strong>Services:</strong> {{ device.services|join:", " }}
+        </li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

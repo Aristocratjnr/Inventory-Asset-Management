@@ -6,6 +6,8 @@ from .models import Computer, ComputerHistory
 from django.http import HttpResponse
 from django.contrib import messages
 import csv
+import nmap
+from django.shortcuts import render
 
 def home(request):
     title = 'Computer Inventory Asset Management System - C.I.A.M.S'
@@ -137,3 +139,23 @@ def computerhistory_list(request):
        "queryset": queryset,
     }
     return render(request, "computerhistory_list.html", context)
+
+
+def scan_devices(request):
+    # Initialize the port scanner
+    nm = nmap.PortScanner()
+    # Scan the local network (this is just an example)
+    nm.scan('192.168.1.0/24')
+    
+    # Extract information from the scan results
+    devices = []
+    for host in nm.all_hosts():
+        devices.append({
+            'ip': host,
+            'hostname': nm[host].hostname(),
+            'state': nm[host].state(),
+            'services': nm[host].all_protocols()
+        })
+    
+    # Render the results in a template
+    return render(request, 'devicescan/computerhistory_list.html', {'devices': devices})
